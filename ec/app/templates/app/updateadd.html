@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}
+  Update Adress
+{% endblock %}
+{% block main-content %}
+
+<div class="container my-5">
+  <div class="row">
+    <h3>Welcome <span class="text-capitalize">{{ request.user }}</span></h3>
+  <br/>
+</div>
+
+<div class="col-sm-8 offset-sm-2">
+  <form action="" method="post" class="shadow p-5">
+    <h3 class="text-center">  <u> Your-Profile </u> </h3>
+    <br>
+    {% if messages %}
+    {% for msg in messages %}
+      <div class="alert alert-{{ msg.tags }}" role="alert">{{ msg }}</div>
+    {% endfor %}
+  {% endif %}
+  <br>
+    {% csrf_token %}
+    {% for fm in Form %}
+      {{fm.label_tag}} {{ fm }} 
+    {% endfor %}
+    <div class="col-12 mt-3">
+      <button type="submit" class="btn btn-success" style="width: 100%;">Update </button>
+      <br> <br>
+      <a href="{% url 'address' %}" type="button" class="btn btn-success text-center" style="width: 100%;">Back</a>
+    </div>
+    <br>
+    {% if form.non_field_errors %}
+      {% for error in form.non_field_errors %}
+        <p class="alert text-danger alert-danger my-3">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+  </form>
+</div>
+
+{% endblock main-content %}

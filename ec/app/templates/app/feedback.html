@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Feedback{%endblock title %}
+{% block main-content %}
+<div class="container">
+    <div class="text-center fs-2" id="vg"><b class="txt-mycolor"><u>FeedBack</u></b></div>
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <form method="post">
+            {% csrf_token %} <!-- class site request forvel  for security purpose -->
+            Name <input type="text" name="name" placeholder="Name..." class="form-control">
+            Email <input type="email" name="email" placeholder="Email..." class="form-control">
+            Mobile <input type="number" name="mobile" placeholder="Mobile no..." class="form-control">
+            Massage<textarea style="min-height:80px;resize:none;" name="massage"  placeholder="Type your massage here" class="form-control"
+                required></textarea>
+                <br />
+            <center>
+                <input type="submit" value="Send Feedback" class="btn btn-success bg-gradient active" role="button" style="width: 80%;"
+                    aria-pressed="true" />
+            </center>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock main-content %}
